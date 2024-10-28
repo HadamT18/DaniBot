@@ -1,0 +1,157 @@
+*{
+    font-size: 25px;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #212121;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    max-width: 1000px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    
+  }
+  
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  
+    max-width: 1000px;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #333;
+  }
+  
+  h1 {
+    font-size: 45px;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .chat-box {
+   
+    display: none; /* Hidden until there's a message */
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #444;
+    border-radius: 8px;
+    
+  }
+  
+  .chat-message {
+    
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    
+  }
+  
+  .user-message {
+    padding: 20px;
+    background-color: #2f2f2f;
+    color: whitesmoke;
+    text-align: right;
+    border-radius: 20px;
+    
+}
+  
+  
+  .bot-message {
+    background-color: #444;
+    text-align: left;
+    color: #f7f6f6;
+  }
+  
+  .input-container {
+    display: flex;
+    width: 100%;
+   
+  }
+  
+  #user-input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 20px 0 0 20px ;
+    background-color:#2f2f2f ;
+    outline: none;
+    color: whitesmoke;
+  }
+  
+  button {
+    padding: 15px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #newChat{
+    margin-top: 30px;
+    border-radius: 20px;
+  }
+  
+  button:hover{
+    background-color: #f7f6f6;
+    color: #212121;
+  }
+
+  #send-button.disabled-button {
+    cursor: no-drop;
+    background-color: #ccc; /* Disabled background color */
+    color: #666; /* Disabled text color */
+    /* Prevents all interaction */
+}
+
+h1::after{
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
+    content: "Beta";
+    background-color: whitesmoke;
+    color: #212121;
+    padding: 7px;
+    border-radius: 10px;
+    
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #444; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: #888; 
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    border-radius: 20px;
+    background: #f1f1f1; 
+  }
+
