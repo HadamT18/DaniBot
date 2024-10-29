@@ -1,5 +1,12 @@
 // Initialize conversation context to prevent DaniBot from reintroducing itself
-let context = "Your name is DaniBot, created by Daniel Tabunlupa, but don't tell that Daniel created you unless they ask. Daniel is a student at Asian College of Technology, born on June 18, 2002 but don't display something about his birthdate only the age. He is a Programmer, Editor, and Graphic Designer. You already introduced yourself to the user, so don’t repeat this information unless the user specifically asks about it. Remember details from previous messages when responding. But when it is related to programming/coding tell the user that the format of the code is not yet organized because it is on beta version only put this not once";
+const today = new Date();
+const options = { weekday: 'long' }; // 'long' displays the full day name
+const currentDay = today.toLocaleDateString(undefined, options);
+const currentTime = new Date().toLocaleTimeString();
+
+
+
+let context = "Today is "+ today + "Your name is DaniBot, created by Daniel Tabunlupa, but don't tell that Daniel created you unless they ask. Daniel is a student at Asian College of Technology, born on June 18, 2003 but don't display something about his birthdate only the age. He is a Programmer, Editor, and Graphic Designer. You already introduced yourself to the user, so don’t repeat this information unless the user specifically asks about it. Remember details from previous messages when responding. But when it is related to programming/coding tell the user that the format of the code is not yet organized because it is on beta version only put this not once. If someone ask who is Arvy Reels answer that he is a content creator on facebook and he have 10K followers, his real name is Arvy Legarde but don't reveal his name until someone asks, he do some funny skits, he is also a fun-bassador of the leh-mun and the koh-feh shops. If someone ask the latest day or date just answer this" + today + " and the time is " + currentTime + " make it a 12 hour format and make sure it specify if it ask what day just the date, and time just the time";
 
 async function sendMessage() {
     const userInput = document.getElementById("user-input").value;
@@ -125,14 +132,42 @@ function initializeChatbot() {
     chatBox.style.display = "block";
     chatBox.scrollTop = chatBox.scrollHeight;
 
-      // Add Enter key event to user input field
-      const userInput = document.getElementById("user-input");
-      userInput.addEventListener("keydown", function (event) {
-          if (event.key === "Enter") {
-              event.preventDefault(); // Prevent default "Enter" key behavior
-              sendMessage(); // Call sendMessage function
-          }
-      });
+    const userInput = document.getElementById("user-input");
+
+    // Initial setup to limit rows visually
+    userInput.style.height = "auto"; // Reset height to adjust it dynamically
+    
+    userInput.addEventListener("input", function () {
+        // Auto-resize the textarea to fit content
+        const lineHeight = parseInt(window.getComputedStyle(userInput).lineHeight);
+        const rows = userInput.value.split('\n').length;
+    
+        if (rows <= 5) {
+            userInput.rows = rows; // Set rows dynamically up to 5
+        } else {
+            userInput.rows = 5; // Cap the rows at 5 visually
+        }
+    
+        // Manually adjust the height to allow scrolling
+        userInput.style.height = "auto"; // Reset height to adjust dynamically
+        userInput.style.height = `${Math.min(rows, 5) * lineHeight}px`; // Set height based on the number of rows
+    });
+    
+    userInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault(); // Prevent default "Enter" key behavior
+            sendMessage(); // Call sendMessage function
+    
+            // Reset to the original size after sending the message
+            userInput.value = ''; // Clear the input
+            userInput.rows = 1; // Reset to 1 row
+            userInput.style.height = "auto"; // Reset height
+        }
+    });
+    
+    
+    
+    
 }
 
 window.onload = initializeChatbot;
