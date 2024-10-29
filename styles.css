@@ -58,7 +58,7 @@ body {
   }
   
   .chat-message {
-    
+    line-height: 1.5; 
     margin: 5px 0;
     padding: 8px;
     border-radius: 5px;
@@ -70,8 +70,9 @@ body {
     background-color: #2f2f2f;
     color: whitesmoke;
     text-align: right;
-    border-radius: 20px;
+    line-height: 1.5; 
     margin-bottom: 10px;
+    border-radius: 20px 0 0 20px;
     
 }
   
